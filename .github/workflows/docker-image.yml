@@ -33,7 +33,7 @@ jobs:
           with:
             resource-group: ${{ secrets.RESOURCE_GROUP }}
             dns-name-label: aaaaaaafuckoff
-            image: $IMAGE_TAG
+            image: ${{ IMAGE_TAG }}
             registry-login-server: ${{ secrets.AZURE_REGISTRY_LOGIN }}
             registry-username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
             registry-password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
