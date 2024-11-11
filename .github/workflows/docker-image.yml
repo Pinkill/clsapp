@@ -41,6 +41,6 @@ jobs:
               AZURE_SQL_CONNECTIONSTRING_ASIAEAST=${{ secrets.ASIAEAST_CONNECTIONSTRING }}
               AZURE_SQL_CONNECTIONSTRING_USWEST=${{ secrets.USWEST_CONNECTIONSTRING }}
             name: aci-outfitapp
-            location: 'north eu'
+            location: 'northeurope'
 
 
