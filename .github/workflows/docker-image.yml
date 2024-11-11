@@ -27,9 +27,6 @@ jobs:
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
 
-        - name: 'Set Location'
-        - run: echo "north eu" >> $LOCATION
-
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
@@ -43,6 +40,6 @@ jobs:
               AZURE_SQL_CONNECTIONSTRING_ASIAEAST=${{ secrets.ASIAEAST_CONNECTIONSTRING }}
               AZURE_SQL_CONNECTIONSTRING_USWEST=${{ secrets.USWEST_CONNECTIONSTRING }}
             name: aci-outfitapp
-            location: $LOCATION
+            location: 'north eu'
 
 
