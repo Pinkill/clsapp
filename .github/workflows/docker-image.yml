@@ -20,9 +20,9 @@ jobs:
         - name: 'Build and push image to Azure Container Registry'
           uses: azure/docker-login@v1
           with:
-            login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            username: ${{ secrets.REGISTRY_USERNAME }}
-            password: ${{ secrets.REGISTRY_PASSWORD }}
+            login-server: ${{ secrets.AZURE_REGISTRY_LOGIN }}
+            username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
+            password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
         - run: |
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
@@ -32,10 +32,10 @@ jobs:
           with:
             resource-group: ${{ secrets.RESOURCE_GROUP }}
             dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
-            image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
-            registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            registry-username: ${{ secrets.REGISTRY_USERNAME }}
-            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+            image: ${{ secrets.AZURE_REGISTRY_LOGIN }}/outfitapp:$(git log -1 --format=%h)
+            registry-login-server: ${{ secrets.AZURE_REGISTRY_LOGIN }}
+            registry-username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
+            registry-password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
             secure-environment-variables: AZURE_SQL_CONNECTIONSTRING_EUNORTH=${{ secrets.EUNORTH_CONNECTIONSTRING }}
               AZURE_SQL_CONNECTIONSTRING_ASIAEAST=${{ secrets.ASIAEAST_CONNECTIONSTRING }}
               AZURE_SQL_CONNECTIONSTRING_USWEST=${{ secrets.USWEST_CONNECTIONSTRING }}
