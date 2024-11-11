@@ -24,7 +24,7 @@ jobs:
             username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
             password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
         - run: |
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
+            docker build ./outfitapp -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/outfitapp:$(git log -1 --format=%h)
 
         - name: 'Deploy to Azure Container Instances'
