@@ -38,8 +38,8 @@ jobs:
             registry-username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
             registry-password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
             secure-environment-variables: |
-              AZURE_SQL_CONNECTIONSTRING_EUNORTH=${{ secrets.EUNORTH_CONNECTIONSTRING }}
-              AZURE_SQL_CONNECTIONSTRING_ASIAEAST=${{ secrets.ASIAEAST_CONNECTIONSTRING }}
-              AZURE_SQL_CONNECTIONSTRING_USWEST=${{ secrets.USWEST_CONNECTIONSTRING }}
+              "AZURE_SQL_CONNECTIONSTRING_EUNORTH=${{ secrets.EUNORTH_CONNECTIONSTRING }}"
+              "AZURE_SQL_CONNECTIONSTRING_ASIAEAST=${{ secrets.ASIAEAST_CONNECTIONSTRING }}"
+              "AZURE_SQL_CONNECTIONSTRING_USWEST=${{ secrets.USWEST_CONNECTIONSTRING }}"
             name: temp-aci-outfitapp
             location: 'northeurope'
