@@ -24,7 +24,7 @@ jobs:
             username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
             password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
         - run: |
-            IMAGE_TAG=${{ secrets.AZURE_REGISTRY_LOGIN }}/outfitapp:${{ git log -1 --format=%h }}
+            IMAGE_TAG=${{ secrets.AZURE_REGISTRY_LOGIN }}/outfitapp:$(git log -1 --format=%h)
             docker build ./outfitapp -t $IMAGE_TAG
             docker push $IMAGE_TAG
 
@@ -33,7 +33,7 @@ jobs:
           with:
             resource-group: ${{ secrets.RESOURCE_GROUP }}
             dns-name-label: ${{ secrets.RESOURCE_GROUP }}${ github.run_number }
-            image: ${{ secrets.AZURE_REGISTRY_LOGIN }}/outfitapp:$(git log -1 --format=%h)
+            image: $IMAGE_TAG
             registry-login-server: ${{ secrets.AZURE_REGISTRY_LOGIN }}
             registry-username: ${{ secrets.AZURE_REGISTRY_LOGIN_USERNAME }}
             registry-password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
