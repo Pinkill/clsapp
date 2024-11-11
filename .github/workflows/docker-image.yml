@@ -25,7 +25,7 @@ jobs:
             password: ${{ secrets.AZURE_REGISTRY_LOGIN_PASSWORD }}
         - run: |
             IMAGE_TAG=${{ secrets.AZURE_REGISTRY_LOGIN }}/outfitapp:$(git log -1 --format=%h)
-            DNS_NUM=${ github.run_number }
+            DNS_NUM=${{ github.run_number }}
             docker build ./outfitapp -t $IMAGE_TAG
             docker push $IMAGE_TAG
 
