@@ -8,15 +8,15 @@ on:
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
-        steps:
+        steps:        
+        - name: 'Checkout GitHub Action'
+          uses: actions/checkout@main
+
         - name: Set variables
           id: vars
           run: |
             echo "sha_short=$(git log -1 --format=%h)" >> $GITHUB_OUTPUT
             echo "image_tag=${{ secrets.AZURE_REGISTRY_LOGIN }}/outfitapp:$(git log -1 --format=%h)" >> $GITHUB_OUTPUT
-        
-        - name: 'Checkout GitHub Action'
-          uses: actions/checkout@main
           
         - name: 'Login via Azure CLI'
           uses: azure/login@v1
